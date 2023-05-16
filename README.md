@@ -24,19 +24,18 @@ This is a TODO app built with Django. It allows users to create, update, and del
 3. Create a virtual environment:
    - On macOS and Linux: 
      ```bash
-      python -m venv venv
+     python -m venv venv
    - On Windows:
      ```bash
-        py -m venv venv
-    
+     py -m venv venv
 
 4. Activate the virtual environment:
    - On macOS and Linux:
      ```bash
-        source venv/bin/activate
+     source venv/bin/activate
    - On Windows:
     ```bash
-        venv\Scripts\activate
+    venv\Scripts\activate
 
 5. Install the dependencies:
     ```bash
