@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Usuń listę  List</h3>
+<p>Czy na pewno chcesz usunąć plik <i>{{ object.title }}</i>?</p>
+<form method="POST">
+    {% csrf_token %}
+    <input
+        value="Usuń"
+        type="submit">
+</form>
+<input
+    value="Anuluj"
+    type="button"
+    onclick="location.href='{% url "index" %}';">
+{% endblock %}

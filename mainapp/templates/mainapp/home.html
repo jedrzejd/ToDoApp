@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+    <div>
+        <h1 onclick="location.href='{% url "index" %}'">
+            Listy zadań do wykonania
+        </h1>
+    </div>
+    <div>
+        {% if user.is_authenticated %}
+            Liczba list uzytkownika = {{ countLists }}
+            <br>
+            Liczba zadań do wykonywania = {{ countTasks }}
+            <br>
+            Średnia liczba zadań na liście = {{ mean }}
+            <br>
+            Maksymalna liczba zadań w listach = {{ max }}
+            <br>
+            Minimalna liczba zadań w listach = {{ min }}
+            <br>
+
+        {% endif %}
+    </div>
+    <ul>
+        {% for list in object_list %}
+            <li>
+                <div
+                        role="button"
+                        onclick="location.href='{% url "list" list.id %}'">
+                    {{ list.title }}
+                </div>
+            </li>
+        {% empty %}
+            <h3>Brak list zadań do wykonania</h3>
+        {% endfor %}
+    </ul>
+    <p>
+        <input
+                value="Dodaj nową listę zadań"
+                type="button"
+                onclick="location.href='{% url "list-add" %}'"/>
+    </p>
+{% endblock %}

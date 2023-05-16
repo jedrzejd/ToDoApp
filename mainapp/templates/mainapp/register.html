@@ -1,0 +1,20 @@
+{% extends "base_login.html" %}
+{% block content %}
+    {% include 'message/messages.html' %}
+    {% load crispy_forms_tags %}
+
+    <div class="container py-5">
+        <h1>Rejestracja</h1>
+        {% load i18n %}
+        {% language 'pl' %}
+            <form method="POST">
+
+                {% csrf_token %}
+                {{ register_form|crispy }}
+                <button class="btn btn-primary" type="submit">Register</button>
+            </form>
+        {% endlanguage %}
+        <p class="text-center">Jeżeli masz już konto to <a href="/login">zaloguj się tutaj</a> </p>
+    </div>
+
+{% endblock %}

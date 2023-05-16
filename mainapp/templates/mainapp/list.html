@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+    <div>
+        <div>
+            <br>
+            <div role="main">
+                <h4>Edytuj listę zadań: <u><i>{{ todo_list.title }}</i></u></h4>
+            </div>
+            <ul>
+            <div>
+                Liczba zadań użytkownika {{ object_list.count }}
+            </div>
+                {% for task in object_list %}
+                <li>
+                    <div>
+                        <div
+                            role="button"
+                            onclick="location.href='{% url "task-update" todo_list.id task.id %}'">
+                            {{ task.title }}
+                            {% load i18n %}
+                                {% language 'pl' %}
+                                    ({{ task.end_date | date:"l, j F Y" }})
+                                {% endlanguage %}
+                        </div>
+                    </div>
+                </li>
+                {% empty %}
+                <p>Lista zadań jest pusta.</p>
+                {% endfor %}
+            </ul>
+            <p>
+                <input
+                    value="Dodaj nowe zadanie"
+                    type="button"
+                    onclick="location.href='{% url "task-add" todo_list.id %}'"/>
+                <input
+                    value="Usuń listę"
+                    type="button"
+                    onclick="location.href=
+                    '{% url "list-delete" todo_list.id %}'" />
+
+            </p>
+        </div>
+    </div>
+{% endblock %}

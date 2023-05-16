@@ -1,0 +1,30 @@
+{% extends "base_login.html" %}
+{% block content %}
+    {% include 'message/messages.html' %}
+    <div>
+        <br>
+        <h1>
+            Zaloguj się aby korzystać z aplikacji
+        </h1>
+        <br>
+    </div>
+
+    {% load crispy_forms_tags %}
+    <!--Login-->
+    <div class="container py-5">
+        {% load i18n %}
+        {% language 'pl' %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ login_form|crispy }}
+            <button class="btn btn-primary" type="submit">Zaloguj</button>
+        </form>
+        {% endlanguage %}
+        <p class="text-center">Nie masz konta? <a href="register">
+            Stwórz konto</a>.
+        </p>
+        <p class="text-center">Nie pamietasz hasła? <a href="password_reset">
+            Resetuj hasło</a>.
+        </p>
+    </div>
+{% endblock %}
